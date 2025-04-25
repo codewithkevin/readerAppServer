@@ -1,0 +1,61 @@
+{
+  "name": "readerappserver",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "description": "Backend service for all readerApp related stuff",
+  "engines": {
+    "node": "18.17.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "build:prod": "tsc",
+    "build:dev": "tsc",
+    "build:watch": "chokidar 'src/**/*.{ts,json}' --command 'bun run build:dev' --initial",
+    "dev": "concurrently bun:build:watch bun:start:watch",
+    "start": "node dist/index.js",
+    "start:watch": "wait-on dist/index.js && cross-env APP_ENV=local  nodemon dist/index.js --watch dist",
+    "build:check": "tsc --noEmit",
+    "eslint:check": "eslint --ext .ts src/",
+    "fix:lint": "eslint . --fix",
+    "lint": "concurrently bun:eslint:check bun:build:check",
+    "copy:env": "ncp .env.local .env",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --list-different --write .",
+    "audit": "npx audit-ci@^6 --config ./audit-ci.jsonc",
+    "audit:fix": "bun audit fix"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/luxon": "^3.6.2",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "crypto": "^1.0.1",
+    "husky": "^9.1.7",
+    "nodemon": "^3.1.9",
+    "wait-on": "^8.0.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.1",
+    "axios": "^1.8.4",
+    "bcrypt": "^5.1.1",
+    "celebrate": "^15.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.5.0",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "luxon": "^3.6.1",
+    "mongoose": "^8.13.2",
+    "path-to-regexp": "^8.2.0",
+    "umzug": "^3.8.2"
+  }
+}

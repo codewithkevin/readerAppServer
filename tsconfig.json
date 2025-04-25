@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "Node16",
+    "rootDir": "./src",
+    "baseUrl": "src",
+    "moduleResolution": "Node16",
+    "paths": {},
+    "declaration": false,
+    "sourceMap": false,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true
+  },
+  "include": ["src", "scripts"],
+  "exclude": ["node_modules", "src/**/*.test.ts"]
+}
