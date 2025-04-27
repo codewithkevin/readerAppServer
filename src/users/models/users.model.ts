@@ -25,6 +25,7 @@ export interface IUser extends IUserInput, Document {
     profilePicture?: string;
     digitalAddress?: string;
     accountStatus: AccountStatusEnum;
+    isAccountVerified: boolean;
     createdAt: Date;
     updatedAt: Date;
     comparePassword(candidatePassword: string): Promise<boolean>;
@@ -80,6 +81,10 @@ const UserSchema: Schema = new Schema<IUser>({
     accountStatus: {
         type: String, required: true,
         enum: AccountStatuses
+    },
+    isAccountVerified: {
+        type: Boolean,
+        default: false
     },
     createdAt: {
         type: Date,

@@ -1,11 +1,14 @@
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import { IUser } from 'users/models/users.model';
+import { RoleEnums } from '../constants';
 
 
 export interface TokenPayload {
     id: string;
     username: string;
+    name: string;
+    role: RoleEnums
 }
 
 export interface Tokens {
@@ -25,7 +28,9 @@ export class TokenService {
     generateTokens(user: IUser): Tokens {
         const payload: TokenPayload = {
             id: user._id,
-            username: user.username
+            username: user.username,
+            name: user.fullName,
+            role: user.role
         };
 
         const accessToken = jwt.sign(

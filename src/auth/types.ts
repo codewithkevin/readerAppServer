@@ -1,6 +1,7 @@
 import { Request } from "express";
 import { RoleEnums } from "../constants";
 import { IUser } from "users/models/users.model";
+import { TokenPayload } from "../service/token.service";
 
 
 
@@ -48,4 +49,8 @@ export interface AuthResult {
         accessToken: string;
         refreshToken: string;
     };
+}
+
+export interface UnAuthenticatedRequest extends Request {
+    user?: TokenPayload;
 }

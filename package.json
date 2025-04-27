@@ -30,6 +30,7 @@
     "@types/cors": "^2.8.17",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/luxon": "^3.6.2",
+    "@types/nodemailer": "^6.4.17",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
@@ -55,6 +56,7 @@
     "jsonwebtoken": "^9.0.2",
     "luxon": "^3.6.1",
     "mongoose": "^8.13.2",
+    "nodemailer": "^6.10.1",
     "path-to-regexp": "^8.2.0",
     "umzug": "^3.8.2"
   }
